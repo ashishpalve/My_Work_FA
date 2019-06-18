@@ -1,0 +1,7 @@
+#Change local permissions
+sudo chmod -R 777 .local
+
+#Jupyter Notebook Installation
+cd /usr/local/lib/netscape/
+sudo chgrp <user> mime.types
+sudo chown <user> mime.types
