@@ -5,3 +5,26 @@ sudo chmod -R 777 .local
 cd /usr/local/lib/netscape/
 sudo chgrp <user> mime.types
 sudo chown <user> mime.types
+
+
+
+github
+https://www.geeksforgeeks.org/how-to-install-configure-and-use-git-on-ubuntu/
+
+sudo apt-get install git
+git config --global user.name "ashishpalve"
+git config --global user.name "ashishpalve.07@gmail.com"
+
+mkdir myproject
+cd myproject
+git init
+git remote add origin  https://github.com/ashishpalve/myproject.git
+git add . or git add helloworld.c
+git commit -m ‘your_message’
+git push origin master
+
+
+
+Collaboration
+git clone https://github.com/ashishpalve/myproject.git
+git pull origin master
