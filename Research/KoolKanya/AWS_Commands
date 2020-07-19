@@ -1,0 +1,196 @@
+Old Url
+mongodb+srv://dev:oAX95s3vvOcqwZ4b@staging.wztxj.mongodb.net/test?retryWrites=true&w=majority
+
+New Url
+mongodb+srv://dev-admin:WOXFDIOOYQEF2Rar@staging.wztxj.mongodb.net/prod-dump?retryWrites=true&w=majority
+
+
+
+
+ssh -i "buvana_test.pem" ubuntu@ec2-13-234-231-199.ap-south-1.compute.amazonaws.com
+
+
+scp -i /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/buvana_test.pem /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/reco_config.ini ubuntu@ec2-13-232-166-184.ap-south-1.compute.amazonaws.com:/home/ubuntu/reco/Reco_Solution/
+
+scp -i /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/buvana_test.pem /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/Data_Creation_Pipeline_2.py ubuntu@ec2-13-232-166-184.ap-south-1.compute.amazonaws.com:/home/ubuntu/reco/Reco_Solution/
+
+scp -i /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/buvana_test.pem /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/Recommendation_Modelling_Pipeline_2.py ubuntu@ec2-13-234-231-199.ap-south-1.compute.amazonaws.com:/home/ubuntu/reco/Reco_Solution/
+
+scp -i /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/buvana_test.pem /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/Recommendation_Scoring_Engine_Pipeline.py ubuntu@ec2-13-127-240-102.ap-south-1.compute.amazonaws.com:/home/ubuntu/reco/Reco_Solution/
+
+scp -i /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/buvana_test.pem /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/Send_Mail.py ubuntu@ec2-13-232-166-184.ap-south-1.compute.amazonaws.com:/home/ubuntu/reco/Reco_Solution/
+
+scp -i /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/buvana_test.pem /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/trigger_reco_job.sh ubuntu@ec2-13-232-166-184.ap-south-1.compute.amazonaws.com:/home/ubuntu/reco/Reco_Solution/
+
+scp -i /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/buvana_test.pem /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/Item_to_Item_Recommendation.py ubuntu@ec2-13-232-166-184.ap-south-1.compute.amazonaws.com:/home/ubuntu/reco/Reco_Solution/
+
+
+
+scp -i /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/buvana_test.pem ubuntu@ec2-52-66-111-216.ap-south-1.compute.amazonaws.com:/home/ubuntu/reco/Reco_Solution/logfile.txt /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/
+
+
+
+REQUIREMENTS
+
+sudo apt-get update
+sudo apt-get install python3-pip
+pip3 install --upgrade pip
+
+Packages
+pip3 install pandas
+pip3 install numpy
+pip3 install matplotlib
+pip3 install pymongo
+pip3 install dnspython
+pip3 install pymongo[srv]
+pip3 install BeautifulSoup4
+pip3 install scipy
+pip3 install sklearn
+pip3 install nltk
+
+sudo apt-get install awscli
+
+-- Configure the AWS account from aws cli
+aws configure
+
+
+crontab -e
+
+--min hr date mon day_of_week process_location file_locaton
+59 20 20 6 * /bin/sh /home/ubuntu/reco/Reco_Solution/trigger_reco_job.sh
+
+crontab -l
+
+Schedules
+
+01 03 * * * /bin/sh /home/ubuntu/reco/Reco_Solution/trigger_reco_job.sh
+
+01 06 * * * /bin/sh /home/ubuntu/reco/Reco_Solution/trigger_reco_job.sh
+
+01 09 * * * /bin/sh /home/ubuntu/reco/Reco_Solution/trigger_reco_job.sh
+
+01 12 * * * /bin/sh /home/ubuntu/reco/Reco_Solution/trigger_reco_job.sh
+
+01 15 * * * /bin/sh /home/ubuntu/reco/Reco_Solution/trigger_reco_job.sh
+
+01 18 * * * /bin/sh /home/ubuntu/reco/Reco_Solution/trigger_reco_job.sh
+
+01 21 * * * /bin/sh /home/ubuntu/reco/Reco_Solution/trigger_reco_job.sh
+
+01 00 * * * /bin/sh /home/ubuntu/reco/Reco_Solution/trigger_reco_job.sh
+
+account gmail {
+    set smtp-use-starttls
+    set ssl-verify=ignore
+    set smtp-auth=login
+    set smtp=smtp://smtp.gmail.com:587
+    set from="ashpalve28@gmail.com"
+    set smtp-auth-user=ashpalve28@gmail.com
+    set smtp-auth-password=xxxx
+    set ssl-verify=ignore
+}
+
+
+---Triggering the EC2 instance
+
+ssh -i "buvana_test.pem" ubuntu@ec2-13-232-105-87.ap-south-1.compute.amazonaws.com
+
+scp -i /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/buvana_test.pem /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/Send_Mail_ec2.py ubuntu@ec2-13-232-105-87.ap-south-1.compute.amazonaws.com:/home/ubuntu/start_ec2/
+
+scp -i /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/buvana_test.pem /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/start_ec2_instance.sh ubuntu@ec2-13-232-105-87.ap-south-1.compute.amazonaws.com:/home/ubuntu/start_ec2/
+
+
+
+
+45 02 * * * /bin/sh /home/ubuntu/start_ec2/start_ec2_instance.sh
+
+45 05 * * * /bin/sh /home/ubuntu/start_ec2/start_ec2_instance.sh
+
+45 08 * * * /bin/sh /home/ubuntu/start_ec2/start_ec2_instance.sh
+
+45 11 * * * /bin/sh /home/ubuntu/start_ec2/start_ec2_instance.sh
+
+45 14 * * * /bin/sh /home/ubuntu/start_ec2/start_ec2_instance.sh
+
+45 17 * * * /bin/sh /home/ubuntu/start_ec2/start_ec2_instance.sh
+
+45 20 * * * /bin/sh /home/ubuntu/start_ec2/start_ec2_instance.sh
+
+45 23 * * * /bin/sh /home/ubuntu/start_ec2/start_ec2_instance.sh
+
+
+
+--- Node JS API
+
+Old Mongo url
+"mongodb+srv://dev:oAX95s3vvOcqwZ4b@staging.wztxj.mongodb.net/test?authSource=admin&replicaSet=staging-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass%20Community&retryWrites=true&ssl=true"
+
+New Mongo Url
+mongodb+srv://dev-admin:WOXFDIOOYQEF2Rar@staging.wztxj.mongodb.net/prod-dump?retryWrites=true&w=majority
+
+v=12
+curl -sL https://deb.nodesource.com/setup_$v.x | sudo -E bash -
+
+sudo apt-get install -y nodejs
+
+https://nordicapis.com/building-a-restful-api-using-node-js-and-mongodb/
+
+npm init -y
+
+touch app.js
+npm install express mongodb body-parser --save
+
+nodejs app.js
+
+curl -X GET http://localhost:5000/reco_test/5e802b700d477c0044fa5f5e
+
+curl -X GET http://localhost:5000/reco_test/5ef17a1fdd1a3a003739f19e
+
+curl -X GET http://localhost:5000/reco_test/9e802b700d477c0044fa5f5e
+
+curl -X GET http://localhost:5000/item_recommendations/5df72244d092c70016203294
+
+lsof -i tcp:5000
+
+
+ssh -i "buvana_test.pem" ubuntu@ec2-13-126-125-154.ap-south-1.compute.amazonaws.com
+
+scp -i /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/buvana_test.pem /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/API/app.js ubuntu@ec2-13-126-125-154.ap-south-1.compute.amazonaws.com:/home/ubuntu/reco_api/
+
+http://ec2-13-126-125-154.ap-south-1.compute.amazonaws.com:5000/user_recommendations/5e802b700d477c1044fa5f4f
+
+curl -X GET http://ec2-13-126-125-154.ap-south-1.compute.amazonaws.com:5000/user_recommendations/5e802b700d477c1044fa5f4f
+
+http://ec2-13-126-125-154.ap-south-1.compute.amazonaws.com:5000/item_recommendations/5df72244d092c70016203294
+
+curl -X GET http://ec2-13-126-125-154.ap-south-1.compute.amazonaws.com:5000/item_recommendations/5df72244d092c70016203294
+
+sudo npm install pm2 -g
+
+sudo pm2 start app.js
+
+sudo pm2 startup
+
+sudo pm2 show app
+
+sudo pm2 stop 0
+
+
+
+Hashtag Prediction API
+http://127.0.0.1:3000/?query=need%20contacts%20of%20marketing%20agencies
+
+#Deploy the Tag Classification Model
+
+ssh -i "buvana_test.pem" ubuntu@ec2-13-235-245-150.ap-south-1.compute.amazonaws.com
+
+scp -i /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/buvana_test.pem /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/Tag_Classification/reco_config_Tag_Classification.ini ubuntu@ec2-13-235-245-150.ap-south-1.compute.amazonaws.com:/home/ubuntu/Tag_Classification_Solution/
+
+scp -i /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/buvana_test.pem /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/Tag_Classification/Data_Creation_for_Tag_Classification.py ubuntu@ec2-13-235-245-150.ap-south-1.compute.amazonaws.com:/home/ubuntu/Tag_Classification_Solution/
+
+
+scp -i /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/buvana_test.pem /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/Tag_Classification/Tag_Classification_Modelling_Pipeline.py ubuntu@ec2-13-235-245-150.ap-south-1.compute.amazonaws.com:/home/ubuntu/Tag_Classification_Solution/
+
+scp -i /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/buvana_test.pem /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/Tag_Classification/Send_Mail.py ubuntu@ec2-13-235-245-150.ap-south-1.compute.amazonaws.com:/home/ubuntu/Tag_Classification_Solution/
+
+scp -i /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/buvana_test.pem /home/FRACTAL/ashish.palve/My_Work_FA/Research/KoolKanya/Tag_Classification/trigger_tag_classification.sh ubuntu@ec2-13-235-245-150.ap-south-1.compute.amazonaws.com:/home/ubuntu/Tag_Classification_Solution/
